@@ -10,6 +10,6 @@ const BookSchema = new Schema<IBook>({
     description: { type: String, required: true },
 });
 
-const Book = model('Book', BookSchema);
+const Book = model<IBook>('Book', BookSchema);
 
 export default Book;

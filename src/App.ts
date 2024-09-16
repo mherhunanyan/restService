@@ -7,6 +7,7 @@ import express from 'express';
 const app = express();
 
 app.use(bodyParser.json());
+
 app.use('/book', BookRoutes);
 
 const init = async () => {
