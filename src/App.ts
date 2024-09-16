@@ -1,11 +1,23 @@
-import { BookRouter } from 'router/BookRouter';
+import { BookRoutes } from 'routes/BookRoutes';
+import { DATABASE_URL, PORT } from 'Config';
 import bodyParser from 'body-parser';
+import { connect } from 'mongoose';
 import express from 'express';
-import { PORT } from 'Config';
 
 const app = express();
 
 app.use(bodyParser.json());
-app.use('/book', BookRouter);
+app.use('/book', BookRoutes);
 
-app.listen(PORT);
+const init = async () => {
+    try {
+        await connect(DATABASE_URL as string);
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}!`);
+        });
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+init();
