@@ -1,8 +1,7 @@
-import { getAllBooks, getBook, postBook } from 'controllers/BookController';
+import { getBook, postBook } from 'controllers/BookController';
 import { Router } from 'express';
 
 export const BookRoutes = Router();
 
 BookRoutes.post('/', postBook);
 BookRoutes.get('/:id', getBook);
-BookRoutes.get('/', getAllBooks);

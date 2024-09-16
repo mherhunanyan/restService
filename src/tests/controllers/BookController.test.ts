@@ -1,3 +1,4 @@
+import Book from 'models/BookModel';
 import request from 'supertest';
 import { App } from '../../App';
 import mongoose from 'mongoose';
@@ -25,6 +26,36 @@ describe('POST /book', () => {
         expect(response.body.message).toEqual(
             'Missing required fields: Please provide both title and description.',
         );
+    });
+});
+
+describe('GET /book/:id', () => {
+    it('should return 404 if the ID format is wrong', async () => {
+        const response = await request(App).get('/book/123');
+        expect(response.status).toBe(404);
+        expect(response.body.message).toEqual('Wrong ID.');
+    });
+
+    it('should return 404 if no book found with the provided ID', async () => {
+        const fakeId = '507f1f77bcf86cd799439011';
+        const response = await request(App).get(`/book/${fakeId}`);
+        expect(response.status).toBe(404);
+        expect(response.body.message).toEqual('No book found with the provided ID.');
+    });
+
+    it('should return 200 and the book data if a book is found', async () => {
+        const newBook = new Book({
+            title: 'Test Book',
+            description: 'Test Description',
+        });
+        await newBook.save();
+
+        const response = await request(App).get(`/book/${newBook._id}`);
+        expect(response.status).toBe(200);
+        expect(response.body.bookData.title).toEqual('Test Book');
+        expect(response.body.bookData.description).toEqual('Test Description');
+
+        await Book.deleteOne({ _id: newBook._id });
     });
 });
 
