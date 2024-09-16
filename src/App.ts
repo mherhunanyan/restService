@@ -6,6 +6,6 @@ import { PORT } from 'Config';
 const app = express();
 
 app.use(bodyParser.json());
-app.use(BookRouter);
+app.use('/book', BookRouter);
 
 app.listen(PORT);
