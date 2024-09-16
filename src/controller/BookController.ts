@@ -54,3 +54,16 @@ export const getBook = async (req: Request, res: Response, next: NextFunction) =
         return res.status(500).json({ message: 'Internal Server Error' });
     }
 };
+
+export const getAllBooks = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const books = await Book.find({});
+        if (!books.length) {
+            return res.status(404).json({ message: 'No books found' });
+        }
+        res.status(200).json({ message: 'Books retrieved successfully!', books });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({ message: 'Internal Server Error' });
+    }
+};
