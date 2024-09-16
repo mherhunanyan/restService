@@ -1,4 +1,4 @@
-import { getAllBooks, getBook, postBook } from 'controller/BookController';
+import { getAllBooks, getBook, postBook } from 'controllers/BookController';
 import { Router } from 'express';
 
 export const BookRoutes = Router();

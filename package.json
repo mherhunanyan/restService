@@ -6,7 +6,8 @@
         "start": "ts-node -r tsconfig-paths/register src/App.ts",
         "format": "prettier --write .",
         "build": "tsc",
-        "dev": "nodemon"
+        "dev": "nodemon",
+        "test": "jest --detectOpenHandles"
     },
     "keywords": [],
     "author": "",
@@ -21,9 +22,14 @@
     },
     "devDependencies": {
         "@types/express": "^4.17.21",
+        "@types/jest": "^29.5.13",
         "@types/node": "^22.5.5",
+        "@types/supertest": "^6.0.2",
+        "jest": "^29.7.0",
         "nodemon": "^3.1.4",
         "prettier": "^3.3.3",
+        "supertest": "^7.0.0",
+        "ts-jest": "^29.2.5",
         "ts-node": "^10.9.2",
         "typescript": "^5.6.2"
     }

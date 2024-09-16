@@ -4,16 +4,16 @@ import { DATABASE_URL, PORT } from 'Config';
 import bodyParser from 'body-parser';
 import { connect } from 'mongoose';
 
-const app: Application = express();
+export const App: Application = express();
 
-app.use(bodyParser.json());
+App.use(bodyParser.json());
 
-app.use('/book', BookRoutes);
+App.use('/book', BookRoutes);
 
 const init = async () => {
     try {
         await connect(DATABASE_URL as string);
-        app.listen(PORT, () => {
+        App.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}!`);
         });
     } catch (err) {
