@@ -1,10 +1,10 @@
+import express, { Application } from 'express';
 import { BookRoutes } from 'routes/BookRoutes';
 import { DATABASE_URL, PORT } from 'Config';
 import bodyParser from 'body-parser';
 import { connect } from 'mongoose';
-import express from 'express';
 
-const app = express();
+const app: Application = express();
 
 app.use(bodyParser.json());
 
