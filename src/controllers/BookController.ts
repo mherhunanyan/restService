@@ -1,7 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
+import LoggerFactory from '../logger/Logger.factory';
 import Book from '../models/BookModel';
 
 export const postBook = async (req: Request, res: Response, next: NextFunction) => {
+    const logger = LoggerFactory.getLogger('postBook');
     const title = req.body.title;
     const description = req.body.description;
     try {
@@ -19,12 +21,13 @@ export const postBook = async (req: Request, res: Response, next: NextFunction) 
         const bookId = book._id.toString();
         return res.status(201).json({ message: 'Book created successfully', bookId });
     } catch (err) {
-        console.log(err);
+        logger.error(err as string);
         return res.status(500).json({ message: 'Internal Server Error' });
     }
 };
 
 export const getBook = async (req: Request, res: Response, next: NextFunction) => {
+    const logger = LoggerFactory.getLogger('getBook');
     const bookId = req.params.id;
     try {
         if (bookId.length !== 24) {
@@ -47,7 +50,7 @@ export const getBook = async (req: Request, res: Response, next: NextFunction) =
             },
         });
     } catch (err) {
-        console.log(err);
+        logger.error(err as string);
         return res.status(500).json({ message: 'Internal Server Error' });
     }
 };
