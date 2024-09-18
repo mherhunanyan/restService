@@ -1,17 +1,15 @@
 {
     "compilerOptions": {
-        "target": "ES6",
+        "target": "es2016",
         "module": "commonjs",
-        "strict": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
+        "rootDir": "./src",
         "outDir": "./dist",
-        "baseUrl": "./src",
-        "allowSyntheticDefaultImports": true,
-        "paths": {
-            "*": ["*"]
-        }
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "skipLibCheck": true
     },
-    "include": ["src/**/*.ts"],
-    "exclude": ["node_modules", "tests"]
+    "include": ["src/**/*.ts"]
 }

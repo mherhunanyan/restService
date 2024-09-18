@@ -2,7 +2,9 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-export const { PORT, DATABASE_URL } = {
+export const { PORT, NODE_ENV, PRODUCTION_DB_URL, TEST_DB_URL } = {
     PORT: process.env.PORT || 3000,
-    DATABASE_URL: process.env.DATABASE_URL,
+    NODE_ENV: process.env.NODE_ENV,
+    PRODUCTION_DB_URL: process.env.PRODUCTION_DB_URL,
+    TEST_DB_URL: process.env.TEST_DB_URL,
 };

@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import Book from 'models/BookModel';
+import Book from '../models/BookModel';
 
 export const postBook = async (req: Request, res: Response, next: NextFunction) => {
     const title = req.body.title;

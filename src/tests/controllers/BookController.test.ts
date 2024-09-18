@@ -1,4 +1,4 @@
-import Book from 'models/BookModel';
+import Book from '../../models/BookModel';
 import request from 'supertest';
 import { App } from '../../App';
 import mongoose from 'mongoose';
@@ -31,7 +31,9 @@ describe('POST /book', () => {
 
 describe('GET /book/:id', () => {
     it('should return 404 if the ID format is wrong', async () => {
-        const response = await request(App).get('/book/123');
+        const mockBookId = 'aghagsg';
+        const response = await request(App).get(`/book/${mockBookId}`);
+        expect(mockBookId.length).not.toEqual(24);
         expect(response.status).toBe(404);
         expect(response.body.message).toEqual('Wrong ID.');
     });
