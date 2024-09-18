@@ -7,9 +7,9 @@ export const dbInit = async () => {
     const logger = LoggerFactory.getLogger('dbInit');
     if (NODE_ENV === env.DEVELOPMENT) {
         await connect(PRODUCTION_DB_URL as string);
-        logger.info('developmenttttttttttttttt');
+        logger.info('The database connection was successful');
     } else if (NODE_ENV === env.TEST) {
         await connect(TEST_DB_URL as string);
-        logger.info('testtttttttttttttttttt');
+        logger.info('The database connection was successful');
     }
 };

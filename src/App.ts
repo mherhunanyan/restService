@@ -1,12 +1,12 @@
 import { BookRoutes } from './routes/BookRoutes';
-import { dbInit } from './database/Config';
+import { dbInit } from './databases/Config';
 import bodyParser from 'body-parser';
 import { PORT } from './Config';
 import express from 'express';
 import LoggerFactory from './logger/Logger.factory';
 
 const logger = LoggerFactory.getLogger('App');
-const App = express();
+export const App = express();
 
 App.use(bodyParser.json());
 
