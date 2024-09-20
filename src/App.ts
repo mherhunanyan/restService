@@ -1,9 +1,9 @@
+import LoggerFactory from './logger/Logger.factory';
 import { BookRoutes } from './routes/BookRoutes';
 import { dbInit } from './databases/Config';
 import bodyParser from 'body-parser';
 import { PORT } from './Config';
 import express from 'express';
-import LoggerFactory from './logger/Logger.factory';
 
 const logger = LoggerFactory.getLogger('App');
 export const App = express();

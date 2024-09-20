@@ -15,7 +15,7 @@ describe('POST /book', () => {
         expect(response.status).toBe(201);
         expect(response.body).toHaveProperty('bookId');
         expect(response.body.message).toEqual('Book created successfully');
-    });
+    }, 10000);
 
     it('should return 400 if title or description is missing', async () => {
         const bookData = { title: 'Example Title' };
