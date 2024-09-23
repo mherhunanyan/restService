@@ -30,7 +30,7 @@ export const getBook = async (req: Request, res: Response, next: NextFunction) =
     const logger = LoggerFactory.getLogger('getBook');
     const bookId = req.params.id;
     try {
-        if (bookId.length !== 24) {
+        if (!bookId || bookId.length !== 24) {
             return res.status(404).json({
                 message: 'Wrong ID.',
             });
@@ -52,5 +52,25 @@ export const getBook = async (req: Request, res: Response, next: NextFunction) =
     } catch (err) {
         logger.error(err as string);
         return res.status(500).json({ message: 'Internal Server Error' });
+    }
+};
+
+export const deleteBook = async (req: Request, res: Response, next: NextFunction) => {
+    const logger = LoggerFactory.getLogger('deleteBook');
+    const bookId = req.params.id;
+    try {
+        if (!bookId || bookId.length !== 24) {
+            return res.status(404).json({
+                message: 'Wrong ID.',
+            });
+        }
+        const book = await Book.findByIdAndDelete(bookId);
+        if (book) {
+            return res.status(200).json({ message: 'Book deleted successfully' });
+        } else {
+            return res.status(404).json({ message: 'Book not found' });
+        }
+    } catch (err) {
+        logger.error(err as string);
     }
 };
