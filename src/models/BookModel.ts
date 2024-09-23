@@ -6,8 +6,8 @@ interface IBook {
 }
 
 const BookSchema = new Schema<IBook>({
-    title: { type: String, required: true },
-    description: { type: String, required: true },
+    title: { type: String, require },
+    description: { type: String, require },
 });
 
 const Book = model<IBook>('Book', BookSchema);
