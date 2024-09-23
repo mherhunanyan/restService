@@ -36,7 +36,7 @@ export const getBook: RequestHandler = async (req, res, next) => {
                 message: 'Wrong ID.',
             });
         }
-        const book = await Book.findOne({ _id: bookId });
+        const book = await Book.findById(bookId);
         if (!book) {
             return res.status(404).json({
                 message: 'No book found with the provided ID.',

@@ -5,5 +5,5 @@ export const BookRoutes = Router();
 
 BookRoutes.post('/', postBook);
 BookRoutes.get('/:id', getBook);
-BookRoutes.delete('/:id', deleteBook);
 BookRoutes.put('/:id', updateBook);
+BookRoutes.delete('/:id', deleteBook);
